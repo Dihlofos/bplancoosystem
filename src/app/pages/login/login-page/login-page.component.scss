@@ -1,0 +1,29 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100% - 64px);
+  width: 100%;
+
+  &__card {
+    width: 400px;
+    padding: 30px;
+    margin: 0 auto;
+  }
+
+  &__field {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  &__btn {
+    font-size: inherit;
+    min-width: 150px;
+    margin: 10px 0 0;
+  }
+
+  &__title {
+    margin: 0;
+  }
+}

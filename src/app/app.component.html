@@ -1,1 +1,15 @@
+<mat-toolbar color="primary">
+  <div class="toolbar">
+    <a class="toolbar__logo" [routerLink]="'/'">BPCS</a>
+    <button
+      *ngIf="auth.isAuthenticated()"
+      mat-flat-button
+      color="warn"
+      href="#"
+      (click)="logout($event)"
+    >
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
 <router-outlet></router-outlet>

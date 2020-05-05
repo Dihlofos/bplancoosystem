@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { AuthGuard } from './shared/services/auth.guard';
+import { AuthService } from './shared/services/auth.services';
 
 @NgModule({
   declarations: [AppComponent, MainLayoutComponent],
