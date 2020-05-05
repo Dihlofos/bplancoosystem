@@ -4,6 +4,14 @@
       <h2 class="login-page__title">Please login</h2>
       <p class="login-page__description">To use this system</p>
 
+      <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+        {{ error }}
+      </div>
+
+      <div class="alert alert-info" *ngIf="message">
+        {{ message }}
+      </div>
+
       <mat-card-content>
         <mat-form-field appearance="outline" class="login-page__field">
           <mat-label>E-mail</mat-label>

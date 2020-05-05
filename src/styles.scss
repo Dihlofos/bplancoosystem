@@ -1,10 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+//Toolbar height
+$toolbarHeight: 64px;
+$colorPrimary: #3f51b5;
+$colorAccent: #ff4081;
+$colorWarn: #f44336;
+
 html,
 body {
   height: 100%;
 }
+
 body {
+  padding-top: $toolbarHeight;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 1rem;

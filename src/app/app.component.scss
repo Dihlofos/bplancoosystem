@@ -1,7 +1,14 @@
 .toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   &__logo {
     color: white;

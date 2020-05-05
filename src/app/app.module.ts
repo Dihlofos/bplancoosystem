@@ -7,17 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { AuthGuard } from './shared/services/auth.guard';
-import { AuthService } from './shared/services/auth.services';
+import { AlertService } from './shared/services/alert.service';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent],
+  declarations: [AppComponent, MainLayoutComponent, AlertComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AlertService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,27 @@
+.alert-wrap {
+  position: fixed;
+  top: 82px;
+  right: 15px;
+  max-width: 200px;
+  width: auto;
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+
+  &-success {
+    background-color: green;
+  }
+
+  &-warning {
+    background-color: #f44336;
+  }
+
+  &-danger {
+    background-color: red;
+  }
+}
