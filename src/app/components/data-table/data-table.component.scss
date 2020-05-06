@@ -2,4 +2,11 @@
   &__table {
     width: 100%;
   }
+
+  &__row {
+    transition: background-color 0.2s ease-in;
+    &:hover {
+      background-color: rgba(#151515, 0.1);
+    }
+  }
 }

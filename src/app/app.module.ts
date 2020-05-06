@@ -11,8 +11,7 @@ import { AlertService } from './shared/services/alert.service';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { MainComponent } from './pages/main/main.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
-import { ModalService } from './shared/services/modal.service';
-import { ModalComponent } from './shared/components/modal/modal.component';
+import { DataTableDialogComponent } from './components/data-table-dialog/data-table-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import { ModalComponent } from './shared/components/modal/modal.component';
     AlertComponent,
     MainComponent,
     DataTableComponent,
-    ModalComponent,
+    DataTableDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +28,7 @@ import { ModalComponent } from './shared/components/modal/modal.component';
     BrowserAnimationsModule,
     SharedModule,
   ],
-  providers: [AuthGuard, AlertService, ModalService],
+  providers: [AuthGuard, AlertService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

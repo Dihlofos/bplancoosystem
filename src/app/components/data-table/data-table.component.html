@@ -1,7 +1,4 @@
 <div class="data-table">
-  <button mat-raised-button (click)="modalService.openDialog()">
-    Pick one
-  </button>
   <mat-form-field appearance="outline">
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
@@ -38,8 +35,33 @@
       <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
     </ng-container>
 
+    <!-- About -->
+    <ng-container matColumnDef="about">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>About</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="
+            openDialog({
+              name: element.name,
+              weight: element.weight,
+              symbol: element.symbol
+            })
+          "
+          class="data-table__about-btn"
+        >
+          About
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      class="data-table__row"
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
   </table>
   <mat-paginator
     [pageSizeOptions]="[10, 20]"

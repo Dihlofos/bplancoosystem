@@ -1,0 +1,17 @@
+<div class="modal">
+  <h1 mat-dialog-title>Wise choice!</h1>
+  <div mat-dialog-content>
+    <p>
+      You chose <strong>{{ data.name }}</strong>
+    </p>
+    <p>
+      his weight is <strong>{{ data.weight }}</strong>
+    </p>
+    <p>
+      his symbol is <strong>{{ data.symbol }}</strong>
+    </p>
+  </div>
+  <button class="modal__close" (click)="closeModal()">
+    close
+  </button>
+</div>

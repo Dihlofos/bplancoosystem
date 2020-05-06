@@ -3,8 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
-import { ModalService } from 'src/app/shared/services/modal.service';
+import { DataTableDialogComponent } from '../data-table-dialog/data-table-dialog.component';
 
 export interface PeriodicElement {
   name: string;
@@ -43,7 +42,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class DataTableComponent implements OnInit {
   //Data is now hardcodedm nut will by given from backend
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'weight',
+    'symbol',
+    'about',
+  ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   //Sorting on
@@ -52,7 +57,19 @@ export class DataTableComponent implements OnInit {
   //Paginator on
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(public modalService: ModalService) {}
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(data): void {
+    console.log(data);
+    const dialogRef = this.dialog.open(DataTableDialogComponent, {
+      width: '250px',
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
