@@ -1,6 +1,24 @@
-<main class="main-layout">
-  <div class="main-layout__wrapper container">
-    <aside class="main-layout__sidebar">SiDebar</aside>
-    <div class="main-layout__content">Main content</div>
+<app-alert></app-alert>
+
+<div class="main-layout">
+  <mat-toolbar color="primary" class="main-layout__toolbar toolbar">
+    <div class="toolbar__inner container">
+      <a class="toolbar__logo" [routerLink]="'/'">
+        BPMS
+      </a>
+      <button
+        *ngIf="auth.isAuthenticated()"
+        mat-flat-button
+        color="warn"
+        href="#"
+        (click)="logout($event)"
+      >
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-layout__body">
+    <router-outlet></router-outlet>
   </div>
-</main>
+</div>

@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { AuthGuard } from './shared/services/auth.guard';
+import { MainComponent } from './pages/main/main.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: '/', pathMatch: 'full' },
+      { path: '', component: MainComponent, canActivate: [AuthGuard] },
+    ],
   },
   {
     path: 'admin',

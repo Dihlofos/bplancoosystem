@@ -1,14 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
+import { AuthService } from '../../services/auth.services';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
 })
-export class MainLayoutComponent implements OnInit {
-  constructor(private router: Router) {}
+export class MainLayoutComponent {
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
-  ngOnInit(): void {}
+  logout(event: Event): void {
+    event.preventDefault();
+    this.auth.logout();
+    this.alert.warning(this.alert.texts.logout);
+    this.router.navigate(['/admin']);
+  }
 }

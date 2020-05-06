@@ -5,12 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
+import { MainLayoutComponent } from '../shared/components/main-layout/main-layout.component';
 
 const routes = [
   {
     path: '',
-    component: AdminLayoutComponent,
+    component: MainLayoutComponent,
     children: [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: 'login', component: LoginPageComponent },
@@ -19,7 +19,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [LoginPageComponent, AdminLayoutComponent],
+  declarations: [LoginPageComponent],
   imports: [
     SharedModule,
     CommonModule,

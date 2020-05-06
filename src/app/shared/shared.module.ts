@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+//Material modules
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,7 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 //Module thad includes all common essences
 @NgModule({
@@ -18,6 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatFormFieldModule,
     MatSidenavModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   exports: [
     HttpClientModule,
@@ -27,6 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatFormFieldModule,
     MatSidenavModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
 })
 export class SharedModule {}

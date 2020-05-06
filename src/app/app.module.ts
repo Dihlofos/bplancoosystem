@@ -10,9 +10,10 @@ import { AuthGuard } from './shared/services/auth.guard';
 import { AlertService } from './shared/services/alert.service';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { MainComponent } from './pages/main/main.component';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, AlertComponent, MainComponent],
+  declarations: [AppComponent, MainLayoutComponent, AlertComponent, MainComponent, DataTableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

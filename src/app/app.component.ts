@@ -8,17 +8,4 @@ import { AlertService } from './shared/services/alert.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor(
-    public auth: AuthService,
-    private router: Router,
-    private alert: AlertService
-  ) {}
-
-  logout(event: Event): void {
-    event.preventDefault();
-    this.auth.logout();
-    this.alert.warning(this.alert.texts.logout);
-    this.router.navigate(['/admin']);
-  }
-}
+export class AppComponent {}
