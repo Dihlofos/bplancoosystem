@@ -1,4 +1,7 @@
 <div class="data-table">
+  <button mat-raised-button (click)="modalService.openDialog()">
+    Pick one
+  </button>
   <mat-form-field appearance="outline">
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />

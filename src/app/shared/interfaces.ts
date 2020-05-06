@@ -13,3 +13,8 @@ export interface Alert {
   type: string;
   text: string;
 }
+
+export interface Modal {
+  show: boolean;
+  content: string;
+}

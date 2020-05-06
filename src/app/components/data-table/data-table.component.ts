@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 export interface PeriodicElement {
   name: string;
@@ -39,11 +42,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./data-table.component.scss'],
 })
 export class DataTableComponent implements OnInit {
+  //Data is now hardcodedm nut will by given from backend
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
+  //Sorting on
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+  //Paginator on
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  constructor(public modalService: ModalService) {}
 
   ngOnInit() {
     this.dataSource.sort = this.sort;

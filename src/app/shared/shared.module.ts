@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ModalComponent } from './components/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 //Module thad includes all common essences
 @NgModule({
@@ -25,6 +25,7 @@ import { ModalComponent } from './components/modal/modal.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
   exports: [
     HttpClientModule,
@@ -37,7 +38,8 @@ import { ModalComponent } from './components/modal/modal.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
-  declarations: [ModalComponent],
+  declarations: [],
 })
 export class SharedModule {}
