@@ -53,7 +53,7 @@ export class LoginPageComponent implements OnInit {
 
     this.auth.login(user).subscribe(
       () => {
-        this.alertService.success('You was succesfully logged in, have fun!');
+        this.alertService.success(this.alertService.texts.login);
         this.form.reset();
         this.router.navigate(['/']);
         this.submitted = false;

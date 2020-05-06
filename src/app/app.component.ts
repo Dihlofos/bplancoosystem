@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './shared/services/auth.services';
 import { Router } from '@angular/router';
+import { AlertService } from './shared/services/alert.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public auth: AuthService, private router: Router) {}
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
   logout(event: Event): void {
     event.preventDefault();
     this.auth.logout();
-    this.router.navigate(['/login']);
+    this.alert.warning(this.alert.texts.logout);
+    this.router.navigate(['/admin']);
   }
 }

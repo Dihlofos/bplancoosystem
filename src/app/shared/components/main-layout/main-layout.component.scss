@@ -1,8 +1,7 @@
 .main-layout {
-  display: flex;
+  padding: 25px 0;
   height: 100%;
   width: 100%;
-  padding: 25px 0;
 
   &__sidebar {
     width: 200px;
@@ -14,5 +13,11 @@
   &__content {
     padding: 20px;
     flex-grow: 1;
+  }
+
+  &__wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
   }
 }

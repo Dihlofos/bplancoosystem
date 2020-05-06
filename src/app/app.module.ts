@@ -9,9 +9,10 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { AuthGuard } from './shared/services/auth.guard';
 import { AlertService } from './shared/services/alert.service';
 import { AlertComponent } from './shared/components/alert/alert.component';
+import { MainComponent } from './pages/main/main.component';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, AlertComponent],
+  declarations: [AppComponent, MainLayoutComponent, AlertComponent, MainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
