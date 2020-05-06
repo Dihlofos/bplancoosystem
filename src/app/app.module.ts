@@ -13,7 +13,13 @@ import { MainComponent } from './pages/main/main.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, AlertComponent, MainComponent, DataTableComponent],
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    AlertComponent,
+    MainComponent,
+    DataTableComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

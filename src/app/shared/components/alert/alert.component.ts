@@ -1,34 +1,19 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { Subscription } from 'rxjs';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-} from '@angular/animations';
+import { Animations } from '../../animations';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('0.3s', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [animate('0.3s', style({ opacity: 0 }))]),
-    ]),
-  ],
+  animations: [Animations.fadeInOut],
 })
 export class AlertComponent implements OnInit, OnDestroy {
   @Input() delay = 3000;
 
   public text: string = '';
   public type = 'success';
-
   aSub: Subscription;
 
   constructor(private alrtService: AlertService) {}
