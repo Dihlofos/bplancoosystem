@@ -3,10 +3,35 @@
     width: 100%;
   }
 
+  &__search {
+    width: 400px;
+  }
+
+  &__create-btn {
+    padding: 7px;
+    margin: 0.25em 0;
+    min-width: 150px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
   &__row {
     transition: background-color 0.2s ease-in;
     &:hover {
       background-color: rgba(#151515, 0.1);
     }
+  }
+
+  &__btn-wrap {
+    display: flex;
+    margin: 0 -10px;
+  }
+
+  &__btn {
+    margin: 0 5px;
   }
 }

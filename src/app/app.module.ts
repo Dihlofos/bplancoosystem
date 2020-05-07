@@ -12,6 +12,7 @@ import { AlertComponent } from './shared/components/alert/alert.component';
 import { MainComponent } from './pages/main/main.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DataTableDialogComponent } from './components/data-table-dialog/data-table-dialog.component';
+import { CreateComponent } from './pages/create/create.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DataTableDialogComponent } from './components/data-table-dialog/data-ta
     MainComponent,
     DataTableComponent,
     DataTableDialogComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,

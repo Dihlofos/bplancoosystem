@@ -1,11 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-export interface DialogData {
-  weight: string;
-  name: string;
-  symbol: string;
-}
+import { BusinessNeed } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-data-table-dialog',
@@ -15,7 +10,7 @@ export interface DialogData {
 export class DataTableDialogComponent {
   constructor(
     public dialog: MatDialogRef<DataTableDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: BusinessNeed
   ) {}
 
   closeModal() {

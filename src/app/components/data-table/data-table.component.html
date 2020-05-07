@@ -1,8 +1,18 @@
 <div class="data-table">
-  <mat-form-field appearance="outline">
-    <mat-label>Search</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
-  </mat-form-field>
+  <div class="data-table__header">
+    <mat-form-field class="data-table__search" appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
+    </mat-form-field>
+    <a
+      mat-flat-button
+      [routerLink]="'/create'"
+      color="accent"
+      class="data-table__create-btn"
+    >
+      Add new element
+    </a>
+  </div>
 
   <table
     mat-table
@@ -12,47 +22,31 @@
     class="data-table__table"
   >
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
-      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-    </ng-container>
-
-    <!-- About -->
-    <ng-container matColumnDef="about">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>About</th>
+    <ng-container
+      *ngFor="let col of displayedColumns; last as isLast"
+      matColumnDef="{{ col }}"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col }}</th>
       <td mat-cell *matCellDef="let element">
-        <button
-          mat-flat-button
-          color="primary"
-          (click)="
-            openDialog({
-              name: element.name,
-              weight: element.weight,
-              symbol: element.symbol
-            })
-          "
-          class="data-table__about-btn"
-        >
-          About
-        </button>
+        <div *ngIf="!isLast">{{ element[col] }}</div>
+        <div *ngIf="isLast">
+          <div class="data-table__btn-wrap">
+            <button
+              mat-raised-button
+              color="basic"
+              (click)="openDialog(element)"
+              class="data-table__btn"
+            >
+              About
+            </button>
+            <button mat-raised-button color="basic" class="data-table__btn">
+              Edit
+            </button>
+            <button mat-raised-button color="warn" class="data-table__btn">
+              Delete
+            </button>
+          </div>
+        </div>
       </td>
     </ng-container>
 

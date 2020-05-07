@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { MainComponent } from './pages/main/main.component';
+import { CreateComponent } from './pages/create/create.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '', component: MainComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
     ],
   },
   {

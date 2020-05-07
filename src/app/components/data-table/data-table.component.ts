@@ -5,34 +5,202 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DataTableDialogComponent } from '../data-table-dialog/data-table-dialog.component';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface BusinessNeed {
+  rowNum: string;
+  needName: string;
+  yearStart: string;
+  projectNum: string;
+  justification?:
+    | 'OWN_INITIATIVE'
+    | 'RECOMMENDATIONS'
+    | 'INDIVIDUAL_DOC'
+    | 'ANOTHER';
+  procurementWay?:
+    | 'SMALL'
+    | 'PRICE_REQUEST'
+    | 'PROPOSALS_REQUEST'
+    | 'NON_ALTERNATIVE'
+    | 'INTRAGROUP'
+    | 'EXCLUSIVE_SUPPLIER';
+  vendor?: string;
+  groupSign?: 'NK' | 'EOS_IT' | 'OG' | 'RECOMMENDED' | 'EXCLUSIVE' | 'ANOTHER';
+  macroRegion?:
+    | 'MOSCOW'
+    | 'CENTER'
+    | 'SOUTH'
+    | 'VOLGA_REGION'
+    | 'URAL'
+    | 'WEST_SIBERIAN'
+    | 'EAST_SIBERIAN'
+    | 'FAR_EAST';
+  agreementSum?: string;
+  vatRate?: 'VAT_0' | 'VAT_10' | 'VAT_18' | 'VAT_20';
+  agreementDate?: string;
+  agreementExecutionDate?: string;
+  paymentTerm?: string;
+  expensesType?: 'OPEX' | 'CAPEX';
+  capexType?: 'MAINTAINING' | 'DEVELOPMENT';
+  expenseItemForm21?: string;
+  expenseItemDetails?: string;
+  sectionItemForm21?: string;
+  expenseItemFormEconomic?: string;
+  informationSystem?: string;
+  vendorName?: string;
+  yearFinish?: string;
+  planYear1?: string;
+  planYear2?: string;
+  planYear3?: string;
+  planYear4?: string;
+  planYear5?: string;
+  responsibleComment?: string;
+  nkComment?: string;
+  agreementNum?: string;
+  step2doc?: string;
+  requestDoc?: string;
+  businessEntity?: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+const ELEMENT_DATA: BusinessNeed[] = [
+  {
+    rowNum: '1',
+    needName: 'Hydrogen',
+    yearStart: '2012',
+    projectNum: '201',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '2',
+    needName: 'Helium',
+    yearStart: '2012',
+    projectNum: '202',
+    justification: 'INDIVIDUAL_DOC',
+  },
+  {
+    rowNum: '3',
+    needName: 'Lithium',
+    yearStart: '2012',
+    projectNum: '2041',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '4',
+    needName: 'Beryllium',
+    yearStart: '2012',
+    projectNum: '20341',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '5',
+    needName: 'Boron',
+    yearStart: '2012',
+    projectNum: '212301',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '6',
+    needName: 'Carbon',
+    yearStart: '2012',
+    projectNum: '434201',
+    justification: 'INDIVIDUAL_DOC',
+  },
+  {
+    rowNum: '7',
+    needName: 'Nitrogen',
+    yearStart: '2012',
+    projectNum: '625601',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '8',
+    needName: 'Oxygen',
+    yearStart: '2012',
+    projectNum: '2101',
+    justification: 'INDIVIDUAL_DOC',
+  },
+  {
+    rowNum: '9',
+    needName: 'Fluorine',
+    yearStart: '2012',
+    projectNum: '1201',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '10',
+    needName: 'Neon',
+    yearStart: '2012',
+    projectNum: '7201',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '11',
+    needName: 'Sodium',
+    yearStart: '2012',
+    projectNum: '20231',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '12',
+    needName: 'Magnesium',
+    yearStart: '2012',
+    projectNum: '654201',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '13',
+    needName: 'Aluminum',
+    yearStart: '2012',
+    projectNum: '12201',
+    justification: 'INDIVIDUAL_DOC',
+  },
+  {
+    rowNum: '14',
+    needName: 'Silicon',
+    yearStart: '2012',
+    projectNum: '20101',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '15',
+    needName: 'Phosphorus',
+    yearStart: '2012',
+    projectNum: '12201',
+    justification: 'RECOMMENDATIONS',
+  },
+  {
+    rowNum: '16',
+    needName: 'Sulfur',
+    yearStart: '2012',
+    projectNum: '456201',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '17',
+    needName: 'Chlorine',
+    yearStart: '2012',
+    projectNum: '12201',
+    justification: 'INDIVIDUAL_DOC',
+  },
+  {
+    rowNum: '18',
+    needName: 'Argon',
+    yearStart: '2012',
+    projectNum: '24501',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '19',
+    needName: 'Potassium',
+    yearStart: '2012',
+    projectNum: '45201',
+    justification: 'OWN_INITIATIVE',
+  },
+  {
+    rowNum: '20',
+    needName: 'Calcium',
+    yearStart: '2012',
+    projectNum: '44201',
+    justification: 'INDIVIDUAL_DOC',
+  },
 ];
 
 @Component({
@@ -43,12 +211,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DataTableComponent implements OnInit {
   //Data is now hardcodedm nut will by given from backend
   displayedColumns: string[] = [
-    'position',
-    'name',
-    'weight',
-    'symbol',
-    'about',
+    'rowNum',
+    'needName',
+    'yearStart',
+    'projectNum',
+    'justification',
+    'actions',
   ];
+  data = ELEMENT_DATA;
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   //Sorting on
@@ -60,7 +230,6 @@ export class DataTableComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(data): void {
-    console.log(data);
     const dialogRef = this.dialog.open(DataTableDialogComponent, {
       width: '250px',
       data,
