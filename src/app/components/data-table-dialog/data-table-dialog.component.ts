@@ -1,6 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BusinessNeed } from 'src/app/shared/interfaces';
+import { BNeedService } from 'src/app/shared/services/bneeds.service';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-data-table-dialog',
@@ -15,5 +17,9 @@ export class DataTableDialogComponent {
 
   closeModal() {
     this.dialog.close();
+  }
+
+  deleteElement(id) {
+    this.dialog.close(id);
   }
 }

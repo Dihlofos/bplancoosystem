@@ -20,17 +20,16 @@ export class BNeedService {
     );
   }
 
-  //   getall(): Observable<BusinessNeed[]> {
-  //     return this.http.get(`${environment.fbDbUrl}/posts.json`).pipe(
-  //       map((response: { [key: string]: any }) => {
-  //         return Object.keys(response).map((key) => ({
-  //           ...response[key],
-  //           id: key,
-  //           date: new Date(response[key].date),
-  //         }));
-  //       })
-  //     );
-  //   }
+  getAll(): Observable<BusinessNeed[]> {
+    return this.http.get(`${environment.fbDbUrl}/needs.json`).pipe(
+      map((response: { [key: string]: any }) => {
+        return Object.keys(response).map((key) => ({
+          ...response[key],
+          id: key,
+        }));
+      })
+    );
+  }
 
   //   getById(id: string): Observable<BusinessNeed> {
   //     return this.http
@@ -46,9 +45,9 @@ export class BNeedService {
   //       );
   //   }
 
-  //   remove(id: string): Observable<void> {
-  //     return this.http.delete<void>(`${environment.fbDbUrl}/posts/${id}.json`);
-  //   }
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.fbDbUrl}/needs/${id}.json`);
+  }
 
   //   update(post: BusinessNeed): Observable<BusinessNeed> {
   //     return this.http.patch<BusinessNeed>(

@@ -1,15 +1,17 @@
 <div class="modal">
-  <h1 mat-dialog-title>Wise choice!</h1>
+  <h1 mat-dialog-title>Delete assertion</h1>
   <div mat-dialog-content>
     <p>
-      You chose <strong>{{ data.needName }}</strong>
+      You want to delete <strong>{{ data.needName }}</strong
+      >, you sure, that this is what you want?
     </p>
-    <p>
-      Project started in <strong>{{ data.yearStart }}</strong>
-    </p>
-    <p>
-      justification is <strong>{{ data.justification }}</strong>
-    </p>
+    <p><strong>Deleted Need couldn't be recovered</strong></p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">No</button>
+    <button mat-button (click)="deleteElement(data.id)" cdkFocusInitial>
+      Yes, do it!
+    </button>
   </div>
   <button class="modal__close" (click)="closeModal()">
     close

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BNeedService } from 'src/app/shared/services/bneeds.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-page',
@@ -15,7 +16,8 @@ export class CreatePageComponent implements OnInit {
 
   constructor(
     private bneedsService: BNeedService,
-    private alert: AlertService
+    private alert: AlertService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class CreatePageComponent implements OnInit {
     this.bneedsService.create(this.form.value).subscribe(() => {
       this.form.reset();
       this.alert.success('Post was created');
+      this.route.navigate(['/']);
     });
   }
 }

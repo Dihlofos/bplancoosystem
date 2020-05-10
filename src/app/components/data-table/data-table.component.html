@@ -31,19 +31,16 @@
         <div *ngIf="!isLast">{{ element[col] }}</div>
         <div *ngIf="isLast">
           <div class="data-table__btn-wrap">
+            <button mat-mini-fab color="basic" class="data-table__btn">
+              <mat-icon>edit</mat-icon>
+            </button>
             <button
-              mat-raised-button
-              color="basic"
-              (click)="openDialog(element)"
+              mat-mini-fab
+              color="warn"
               class="data-table__btn"
+              (click)="openDialog(element)"
             >
-              About
-            </button>
-            <button mat-raised-button color="basic" class="data-table__btn">
-              Edit
-            </button>
-            <button mat-raised-button color="warn" class="data-table__btn">
-              Delete
+              <mat-icon>delete</mat-icon>
             </button>
           </div>
         </div>
