@@ -14,9 +14,8 @@ export interface Alert {
   text: string;
 }
 
-export interface Modal {
-  show: boolean;
-  content: string;
+export interface FbCreateResponse {
+  name: string;
 }
 
 export interface BusinessNeed {
@@ -24,6 +23,7 @@ export interface BusinessNeed {
   needName: string;
   yearStart: string;
   projectNum: string;
+  id: string;
   justification?:
     | 'OWN_INITIATIVE'
     | 'RECOMMENDATIONS'

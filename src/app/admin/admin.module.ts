@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MainLayoutComponent } from '../shared/components/main-layout/main-layout.component';
+import { CreatePageComponent } from './create-page/create-page.component';
+import { AuthGuard } from '../shared/services/auth.guard';
 
 const routes = [
   {
@@ -14,12 +16,17 @@ const routes = [
     children: [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: 'login', component: LoginPageComponent },
+      {
+        path: 'create',
+        component: CreatePageComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [LoginPageComponent],
+  declarations: [LoginPageComponent, CreatePageComponent],
   imports: [
     SharedModule,
     CommonModule,

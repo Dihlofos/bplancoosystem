@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiKey: 'AIzaSyCfkrbfJ_ALO8HyX7G3Sp82wKoqTLykSfo',
-  fbDbUrl: 'https://angular-blog-1bae6.firebaseio.com',
+  apiKey: 'AIzaSyDZ26TxlXMUBWgi2NWjgr_Lddb_o5_6Wr8',
+  fbDbUrl: 'https://bpcsdemo-7aa63.firebaseio.com/',
 };

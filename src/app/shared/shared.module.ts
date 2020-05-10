@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 //Module thad includes all common essences
 @NgModule({
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   exports: [
     HttpClientModule,
@@ -39,6 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   declarations: [],
 })

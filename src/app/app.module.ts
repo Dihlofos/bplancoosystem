@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +12,15 @@ import { AlertComponent } from './shared/components/alert/alert.component';
 import { MainComponent } from './pages/main/main.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DataTableDialogComponent } from './components/data-table-dialog/data-table-dialog.component';
-import { CreateComponent } from './pages/create/create.component';
+import { BNeedService } from './shared/services/bneeds.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth.interceptor';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor,
+};
 
 @NgModule({
   declarations: [
@@ -22,7 +30,6 @@ import { CreateComponent } from './pages/create/create.component';
     MainComponent,
     DataTableComponent,
     DataTableDialogComponent,
-    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,7 @@ import { CreateComponent } from './pages/create/create.component';
     BrowserAnimationsModule,
     SharedModule,
   ],
-  providers: [AuthGuard, AlertService],
+  providers: [AuthGuard, AlertService, BNeedService, INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -50,3 +50,41 @@ p {
 .error {
   color: #f44336;
 }
+
+.backLink {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #f44336;
+  margin: 0 0 20px;
+  padding-left: 20px;
+  font-size: 16px;
+  transform: color 0.15s ease-in;
+
+  &:hover {
+    color: rgba(#f44336, 0.8);
+  }
+
+  &:active {
+    color: rgba(#f44336, 1);
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    width: 3px;
+    height: 13px;
+    background-color: currentColor;
+  }
+
+  &:before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  &:after {
+    bottom: 0;
+    transform: rotate(-45deg);
+  }
+}

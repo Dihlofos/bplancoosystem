@@ -10,7 +10,7 @@ export interface BusinessNeed {
   needName: string;
   yearStart: string;
   projectNum: string;
-  justification?:
+  justification:
     | 'OWN_INITIATIVE'
     | 'RECOMMENDATIONS'
     | 'INDIVIDUAL_DOC'
