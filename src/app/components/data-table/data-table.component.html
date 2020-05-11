@@ -43,13 +43,14 @@
                     *matHeaderCellDef
                     mat-sort-header
                 >
-                    {{ col }}
+                    {{ col | realName }}
                 </th>
                 <td
                     mat-cell
+                    class="data-table__cell"
                     *matCellDef="let element"
                 >
-                    <div *ngIf="!isLast">{{ element[col] }}</div>
+                    <div *ngIf="!isLast">{{ element[col] | realName }}</div>
                     <div *ngIf="isLast">
                         <div class="data-table__btn-wrap">
                             <button

@@ -17,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormComponent } from './components/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RealNamePipe } from './pipes/real-name.pipe';
 
 //Module thad includes all common essences
 @NgModule({
@@ -57,7 +58,8 @@ import { CommonModule } from '@angular/common';
     FormComponent,
     FormsModule,
     ReactiveFormsModule,
+    RealNamePipe,
   ],
-  declarations: [FormComponent],
+  declarations: [FormComponent, RealNamePipe],
 })
 export class SharedModule {}

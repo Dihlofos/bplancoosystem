@@ -11,7 +11,7 @@
                 appearance="outline"
                 class="form__field"
             >
-                <mat-label>RowNum*</mat-label>
+                <mat-label>{{'rowNum' | realName}}</mat-label>
                 <input
                     matInput
                     placeholder="Placeholder"
@@ -23,7 +23,7 @@
                             class="error"
                             *ngIf="form.get('rowNum').errors.required"
                         >
-                            RowNum field is required
+                            {{'rowNum' | realName }} field is required
                         </small>
                     </div>
                 </mat-hint>
@@ -34,7 +34,7 @@
                 appearance="outline"
                 class="form__field"
             >
-                <mat-label>NeedName*</mat-label>
+                <mat-label>{{'needName' | realName}}</mat-label>
                 <input
                     matInput
                     placeholder="Placeholder"
@@ -46,7 +46,7 @@
                             class="error"
                             *ngIf="form.get('needName').errors.required"
                         >
-                            NeedName field is required
+                            {{'needName' | realName}} field is required
                         </small>
                     </div>
                 </mat-hint>
