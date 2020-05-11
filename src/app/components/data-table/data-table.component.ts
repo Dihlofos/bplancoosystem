@@ -1,155 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { DataTableDialogComponent } from '../data-table-dialog/data-table-dialog.component';
 import { BNeedService } from 'src/app/shared/services/bneeds.service';
 import { BusinessNeed } from 'src/app/shared/interfaces';
 import { AlertService } from 'src/app/shared/services/alert.service';
-
-// const ELEMENT_DATA: BusinessNeed[] = [
-//   {
-//     rowNum: '1',
-//     needName: 'Hydrogen',
-//     yearStart: '2012',
-//     projectNum: '201',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '2',
-//     needName: 'Helium',
-//     yearStart: '2012',
-//     projectNum: '202',
-//     justification: 'INDIVIDUAL_DOC',
-//   },
-//   {
-//     rowNum: '3',
-//     needName: 'Lithium',
-//     yearStart: '2012',
-//     projectNum: '2041',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '4',
-//     needName: 'Beryllium',
-//     yearStart: '2012',
-//     projectNum: '20341',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '5',
-//     needName: 'Boron',
-//     yearStart: '2012',
-//     projectNum: '212301',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '6',
-//     needName: 'Carbon',
-//     yearStart: '2012',
-//     projectNum: '434201',
-//     justification: 'INDIVIDUAL_DOC',
-//   },
-//   {
-//     rowNum: '7',
-//     needName: 'Nitrogen',
-//     yearStart: '2012',
-//     projectNum: '625601',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '8',
-//     needName: 'Oxygen',
-//     yearStart: '2012',
-//     projectNum: '2101',
-//     justification: 'INDIVIDUAL_DOC',
-//   },
-//   {
-//     rowNum: '9',
-//     needName: 'Fluorine',
-//     yearStart: '2012',
-//     projectNum: '1201',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '10',
-//     needName: 'Neon',
-//     yearStart: '2012',
-//     projectNum: '7201',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '11',
-//     needName: 'Sodium',
-//     yearStart: '2012',
-//     projectNum: '20231',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '12',
-//     needName: 'Magnesium',
-//     yearStart: '2012',
-//     projectNum: '654201',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '13',
-//     needName: 'Aluminum',
-//     yearStart: '2012',
-//     projectNum: '12201',
-//     justification: 'INDIVIDUAL_DOC',
-//   },
-//   {
-//     rowNum: '14',
-//     needName: 'Silicon',
-//     yearStart: '2012',
-//     projectNum: '20101',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '15',
-//     needName: 'Phosphorus',
-//     yearStart: '2012',
-//     projectNum: '12201',
-//     justification: 'RECOMMENDATIONS',
-//   },
-//   {
-//     rowNum: '16',
-//     needName: 'Sulfur',
-//     yearStart: '2012',
-//     projectNum: '456201',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '17',
-//     needName: 'Chlorine',
-//     yearStart: '2012',
-//     projectNum: '12201',
-//     justification: 'INDIVIDUAL_DOC',
-//   },
-//   {
-//     rowNum: '18',
-//     needName: 'Argon',
-//     yearStart: '2012',
-//     projectNum: '24501',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '19',
-//     needName: 'Potassium',
-//     yearStart: '2012',
-//     projectNum: '45201',
-//     justification: 'OWN_INITIATIVE',
-//   },
-//   {
-//     rowNum: '20',
-//     needName: 'Calcium',
-//     yearStart: '2012',
-//     projectNum: '44201',
-//     justification: 'INDIVIDUAL_DOC',
-//   },
-// ];
+import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-data-table',
@@ -162,11 +20,11 @@ export class DataTableComponent implements OnInit {
     'rowNum',
     'needName',
     'yearStart',
-    'projectNum',
     'justification',
     'actions',
   ];
   data: BusinessNeed[];
+  editData: BusinessNeed;
   dataSource: MatTableDataSource<BusinessNeed>;
 
   //Sorting on
@@ -181,13 +39,13 @@ export class DataTableComponent implements OnInit {
     private alertService: AlertService
   ) {}
 
-  openDialog(data): void {
-    const dialogRef = this.dialog.open(DataTableDialogComponent, {
+  openCloseDialog(data): void {
+    const closeDialogRef = this.dialog.open(CloseDialogComponent, {
       width: '300px',
       data,
     });
 
-    dialogRef.afterClosed().subscribe((id) => {
+    closeDialogRef.afterClosed().subscribe((id) => {
       if (id) {
         this.needService.remove(id).subscribe(() => {
           this.dataSource.data = this.data.filter((value) => value.id !== id);
@@ -197,8 +55,31 @@ export class DataTableComponent implements OnInit {
     });
   }
 
+  openEditDialog(id): void {
+    this.needService.getById(id).subscribe((value) => {
+      const editDialogRef = this.dialog.open(EditDialogComponent, {
+        width: '700px',
+        height: 'calc(100% - 50px)',
+        data: {
+          ...value,
+          id,
+        },
+      });
+
+      editDialogRef.afterClosed().subscribe((newEl) => {
+        this.needService.update(newEl).subscribe((newValue) => {
+          this.dataSource.data = this.data.map((el) => {
+            if (el.id === newEl.id) return newEl;
+            return el;
+          });
+          this.alertService.success('Need was succesfully updated!');
+        });
+      });
+    });
+  }
+
   ngOnInit() {
-    this.needService.getAll().subscribe((value) => {
+    this.needService.getPreview().subscribe((value) => {
       this.data = value;
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.sort = this.sort;

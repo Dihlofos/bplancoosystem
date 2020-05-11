@@ -1,61 +1,100 @@
 <div class="data-table">
-  <div class="data-table__header">
-    <mat-form-field class="data-table__search" appearance="outline">
-      <mat-label>Search</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
-    </mat-form-field>
-    <a
-      mat-flat-button
-      [routerLink]="'/admin/create'"
-      color="accent"
-      class="data-table__create-btn"
-    >
-      Add new element
-    </a>
-  </div>
-
-  <table
-    mat-table
-    matSort
-    [dataSource]="dataSource"
-    class="mat-elevation-z8"
-    class="data-table__table"
-  >
-    <!-- Position Column -->
-    <ng-container
-      *ngFor="let col of displayedColumns; last as isLast"
-      matColumnDef="{{ col }}"
-    >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col }}</th>
-      <td mat-cell *matCellDef="let element">
-        <div *ngIf="!isLast">{{ element[col] }}</div>
-        <div *ngIf="isLast">
-          <div class="data-table__btn-wrap">
-            <button mat-mini-fab color="basic" class="data-table__btn">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button
-              mat-mini-fab
-              color="warn"
-              class="data-table__btn"
-              (click)="openDialog(element)"
+    <div class="data-table__header">
+        <mat-form-field
+            class="data-table__search"
+            appearance="outline"
+        >
+            <mat-label>Search</mat-label>
+            <input
+                matInput
+                (keyup)="applyFilter($event)"
+                placeholder="Ex. ium"
             >
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-        </div>
-      </td>
-    </ng-container>
+        </mat-form-field>
+        <a
+            mat-flat-button
+            [routerLink]="'/admin/create'"
+            color="accent"
+            class="data-table__create-btn"
+        >
+            Add new element
+        </a>
+    </div>
+    <!-- There is we use [hidden] and no ngIfElse just to deal with 
+      sorting and pagination, which not work with this -->
+    <div
+        class="data-table__table"
+        [hidden]="!data"
+    >
+        <table
+            mat-table
+            matSort
+            [dataSource]="dataSource"
+            class="mat-elevation-z8"
+            class="data-table__table"
+        >
+            <!-- Position Column -->
+            <ng-container
+                *ngFor="let col of displayedColumns; last as isLast"
+                matColumnDef="{{ col }}"
+            >
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    mat-sort-header
+                >
+                    {{ col }}
+                </th>
+                <td
+                    mat-cell
+                    *matCellDef="let element"
+                >
+                    <div *ngIf="!isLast">{{ element[col] }}</div>
+                    <div *ngIf="isLast">
+                        <div class="data-table__btn-wrap">
+                            <button
+                                mat-mini-fab
+                                color="basic"
+                                class="data-table__btn"
+                                (click)="openEditDialog(element.id)"
+                            >
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button
+                                mat-mini-fab
+                                color="warn"
+                                class="data-table__btn"
+                                (click)="openCloseDialog(element)"
+                            >
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      mat-row
-      class="data-table__row"
-      *matRowDef="let row; columns: displayedColumns"
-    ></tr>
-  </table>
-  <mat-paginator
-    [pageSizeOptions]="[10, 20]"
-    showFirstLastButtons
-  ></mat-paginator>
+            <tbody>
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns"
+                ></tr>
+                <tr
+                    mat-row
+                    class="data-table__row"
+                    *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+            </tbody>
+        </table>
+
+        <mat-paginator
+            [pageSizeOptions]="[10, 20]"
+            showFirstLastButtons
+        ></mat-paginator>
+    </div>
+    <div
+        class="spinner"
+        *ngIf="!data"
+    >
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
 </div>

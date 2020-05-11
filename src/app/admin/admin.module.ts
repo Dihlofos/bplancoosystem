@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MainLayoutComponent } from '../shared/components/main-layout/main-layout.component';
-import { CreatePageComponent } from './create-page/create-page.component';
+import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { AuthGuard } from '../shared/services/auth.guard';
 
 const routes = [
@@ -27,13 +25,7 @@ const routes = [
 
 @NgModule({
   declarations: [LoginPageComponent, CreatePageComponent],
-  imports: [
-    SharedModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-  ],
+  imports: [SharedModule, CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class AdminModule {}

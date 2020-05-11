@@ -11,7 +11,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-  form: FormGroup;
+  loginForm: FormGroup;
   submitted = false;
   message = '';
 
@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
         this.message = 'Сессия истекла. Введите данные заново';
       }
     });
-    this.form = new FormGroup({
+    this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
         Validators.required,
@@ -40,21 +40,21 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.form.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
 
     this.submitted = true;
 
     const user: User = {
-      email: this.form.value.email,
-      password: this.form.value.password,
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
     };
 
     this.auth.login(user).subscribe(
       () => {
         this.alertService.success(this.alertService.texts.login);
-        this.form.reset();
+        this.loginForm.reset();
         this.router.navigate(['/']);
         this.submitted = false;
       },

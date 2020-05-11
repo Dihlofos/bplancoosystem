@@ -11,10 +11,11 @@ import { AlertService } from './shared/services/alert.service';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { MainComponent } from './pages/main/main.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
-import { DataTableDialogComponent } from './components/data-table-dialog/data-table-dialog.component';
+import { CloseDialogComponent } from './components/close-dialog/close-dialog.component';
 import { BNeedService } from './shared/services/bneeds.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -29,7 +30,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AlertComponent,
     MainComponent,
     DataTableComponent,
-    DataTableDialogComponent,
+    CloseDialogComponent,
+    EditDialogComponent,
   ],
   imports: [
     BrowserModule,

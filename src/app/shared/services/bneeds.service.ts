@@ -20,6 +20,23 @@ export class BNeedService {
     );
   }
 
+  getPreview(): Observable<BusinessNeed[]> {
+    return this.http.get(`${environment.fbDbUrl}/needs.json`).pipe(
+      map((response: { [key: string]: any }) => {
+        return Object.keys(response).map((key) => {
+          const { rowNum, needName, yearStart, justification } = response[key];
+          return {
+            rowNum,
+            needName,
+            yearStart,
+            justification,
+            id: key,
+          };
+        });
+      })
+    );
+  }
+
   getAll(): Observable<BusinessNeed[]> {
     return this.http.get(`${environment.fbDbUrl}/needs.json`).pipe(
       map((response: { [key: string]: any }) => {
@@ -31,28 +48,27 @@ export class BNeedService {
     );
   }
 
-  //   getById(id: string): Observable<BusinessNeed> {
-  //     return this.http
-  //       .get<BusinessNeed>(`${environment.fbDbUrl}/posts/${id}.json`)
-  //       .pipe(
-  //         map((post: BusinessNeed) => {
-  //           return {
-  //             ...post,
-  //             id,
-  //             date: new Date(post.date),
-  //           };
-  //         })
-  //       );
-  //   }
+  getById(id: string): Observable<BusinessNeed> {
+    return this.http
+      .get<BusinessNeed>(`${environment.fbDbUrl}/needs/${id}.json`)
+      .pipe(
+        map((need: BusinessNeed) => {
+          return {
+            ...need,
+            id,
+          };
+        })
+      );
+  }
 
   remove(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.fbDbUrl}/needs/${id}.json`);
   }
 
-  //   update(post: BusinessNeed): Observable<BusinessNeed> {
-  //     return this.http.patch<BusinessNeed>(
-  //       `${environment.fbDbUrl}/posts/${post.id}/.json`,
-  //       post
-  //     );
-  //   }
+  update(need: BusinessNeed): Observable<BusinessNeed> {
+    return this.http.patch<BusinessNeed>(
+      `${environment.fbDbUrl}/needs/${need.id}/.json`,
+      need
+    );
+  }
 }

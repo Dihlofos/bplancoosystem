@@ -1,17 +1,14 @@
 import { Component, Inject, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BusinessNeed } from 'src/app/shared/interfaces';
-import { BNeedService } from 'src/app/shared/services/bneeds.service';
-import { EventEmitter } from 'protractor';
 
 @Component({
-  selector: 'app-data-table-dialog',
-  templateUrl: './data-table-dialog.component.html',
-  styleUrls: ['./data-table-dialog.component.scss'],
+  selector: 'app-close-dialog',
+  templateUrl: './close-dialog.component.html',
 })
-export class DataTableDialogComponent {
+export class CloseDialogComponent {
   constructor(
-    public dialog: MatDialogRef<DataTableDialogComponent>,
+    public dialog: MatDialogRef<CloseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: BusinessNeed
   ) {}
 

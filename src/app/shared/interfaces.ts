@@ -22,7 +22,7 @@ export interface BusinessNeed {
   rowNum: string;
   needName: string;
   yearStart: string;
-  projectNum: string;
+  projectNum?: string;
   id: string;
   justification:
     | 'OWN_INITIATIVE'

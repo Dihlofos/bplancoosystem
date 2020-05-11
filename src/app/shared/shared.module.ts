@@ -13,6 +13,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormComponent } from './components/form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 //Module thad includes all common essences
 @NgModule({
@@ -30,6 +34,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatSelectModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
   ],
   exports: [
     HttpClientModule,
@@ -45,7 +53,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatSelectModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    FormComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: [],
+  declarations: [FormComponent],
 })
 export class SharedModule {}

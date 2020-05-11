@@ -1,0 +1,19 @@
+<div class="modal">
+    <div
+        mat-dialog-content
+        class="modal__content"
+    >
+        <app-form
+            title="Edit this Need"
+            type="edit"
+            [inputData]="data"
+            (formSubmit)="updateElement($event)"
+        ></app-form>
+    </div>
+    <button
+        class="modal__close"
+        (click)="closeModal()"
+    >
+        close
+    </button>
+</div>
