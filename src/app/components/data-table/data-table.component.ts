@@ -67,13 +67,15 @@ export class DataTableComponent implements OnInit {
       });
 
       editDialogRef.afterClosed().subscribe((newEl) => {
-        this.needService.update(newEl).subscribe((newValue) => {
-          this.dataSource.data = this.data.map((el) => {
-            if (el.id === newEl.id) return newEl;
-            return el;
+        if (newEl) {
+          this.needService.update(newEl).subscribe((newValue) => {
+            this.dataSource.data = this.data.map((el) => {
+              if (el.id === newEl.id) return newEl;
+              return el;
+            });
+            this.alertService.success('Need was succesfully updated!');
           });
-          this.alertService.success('Need was succesfully updated!');
-        });
+        }
       });
     });
   }
