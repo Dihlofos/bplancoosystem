@@ -1,315 +1,267 @@
 <div class="form">
-    <h2 class="form___title">{{ title }}</h2>
-    <form
-        [formGroup]="form"
-        (ngSubmit)="onSubmit()"
-        class="form__form"
-    >
-        <div class="form__inner">
-            <!-- Rownum field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>{{'rowNum' | realName}}</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="rowNum"
-                >
-                <mat-hint>
-                    <div *ngIf="form.get('rowNum').touched && form.get('rowNum').invalid">
-                        <small
-                            class="error"
-                            *ngIf="form.get('rowNum').errors.required"
-                        >
-                            {{'rowNum' | realName }} field is required
-                        </small>
-                    </div>
-                </mat-hint>
-            </mat-form-field>
+  <h2 class="form___title">{{ title }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form__form">
+    <div class="form__inner">
+      <!-- Rownum field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "rowNum" | realName }}</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="rowNum" />
+        <mat-hint>
+          <div *ngIf="form.get('rowNum').touched && form.get('rowNum').invalid">
+            <small class="error" *ngIf="form.get('rowNum').errors.required">
+              {{ "rowNum" | realName }} field is required
+            </small>
+          </div>
+        </mat-hint>
+      </mat-form-field>
 
-            <!-- NeedName field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>{{'needName' | realName}}</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="needName"
-                >
-                <mat-hint>
-                    <div *ngIf="form.get('needName').touched && form.get('needName').invalid">
-                        <small
-                            class="error"
-                            *ngIf="form.get('needName').errors.required"
-                        >
-                            {{'needName' | realName}} field is required
-                        </small>
-                    </div>
-                </mat-hint>
-            </mat-form-field>
+      <!-- NeedName field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "needName" | realName }}*</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="needName" />
+        <mat-hint>
+          <div
+            *ngIf="form.get('needName').touched && form.get('needName').invalid"
+          >
+            <small class="error" *ngIf="form.get('needName').errors.required">
+              {{ "needName" | realName }} field is required
+            </small>
+          </div>
+        </mat-hint>
+      </mat-form-field>
 
-            <!-- Yearstart field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>YearStart*</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="yearStart"
-                >
-                <mat-hint>
-                    <div *ngIf="
+      <!-- Yearstart field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "yearStart" | realName }}*</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="yearStart" />
+        <mat-hint>
+          <div
+            *ngIf="
               form.get('yearStart').touched && form.get('yearStart').invalid
-            ">
-                        <small
-                            class="error"
-                            *ngIf="form.get('yearStart').errors.required"
-                        >
-                            YearStart field is required
-                        </small>
-                    </div>
-                </mat-hint>
-            </mat-form-field>
+            "
+          >
+            <small class="error" *ngIf="form.get('yearStart').errors.required">
+              {{ "yearStart" | realName }} field is required
+            </small>
+          </div>
+        </mat-hint>
+      </mat-form-field>
 
-            <!-- Justification field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Justification*</mat-label>
-                <mat-select formControlName="justification">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'OWN_INITIATIVE'">{{ "OWN_INITIATIVE" }}</mat-option>
-                    <mat-option [value]="'RECOMMENDATIONS'">{{ "RECOMMENDATIONS" }}</mat-option>
-                    <mat-option [value]="'INDIVIDUAL_DOC'">{{ "INDIVIDUAL_DOC" }}</mat-option>
-                    <mat-option [value]="'ANOTHER'">{{ "ANOTHER" }}</mat-option>
-                </mat-select>
-                <mat-hint>
-                    <div *ngIf="
+      <!-- Justification field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "justification" | realName }}*</mat-label>
+        <mat-select formControlName="justification">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'OWN_INITIATIVE'">
+            {{ "OWN_INITIATIVE" | realName }}
+          </mat-option>
+          <mat-option [value]="'RECOMMENDATIONS'">
+            {{ "RECOMMENDATIONS" | realName }}
+          </mat-option>
+          <mat-option [value]="'INDIVIDUAL_DOC'">{{
+            "INDIVIDUAL_DOC" | realName
+          }}</mat-option>
+          <mat-option [value]="'ANOTHER'">{{
+            "ANOTHER" | realName
+          }}</mat-option>
+        </mat-select>
+        <mat-hint>
+          <div
+            *ngIf="
               form.get('justification').touched &&
               form.get('justification').invalid
-            ">
-                        <small
-                            class="error"
-                            *ngIf="form.get('justification').errors.required"
-                        >
-                            Justification field is required
-                        </small>
-                    </div>
-                </mat-hint>
-            </mat-form-field>
-
-            <!-- PrjectNum field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
+            "
+          >
+            <small
+              class="error"
+              *ngIf="form.get('justification').errors.required"
             >
-                <mat-label>ProjectNum</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="projectNum"
-                >
-                <mat-hint>
-                    <div *ngIf="
+              {{ "justification" | realName }} field is required
+            </small>
+          </div>
+        </mat-hint>
+      </mat-form-field>
+
+      <!-- PrjectNum field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "projectNum" | realName }}</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          formControlName="projectNum"
+        />
+        <mat-hint>
+          <div
+            *ngIf="
               form.get('projectNum').touched && form.get('projectNum').invalid
-            ">
-                        <small
-                            class="error"
-                            *ngIf="form.get('projectNum').errors.required"
-                        >
-                            ProjectNum field is required
-                        </small>
-                    </div>
-                </mat-hint>
-            </mat-form-field>
+            "
+          >
+            <small class="error" *ngIf="form.get('projectNum').errors.required">
+              {{ "ProjectNum" | realName }} field is required
+            </small>
+          </div>
+        </mat-hint>
+      </mat-form-field>
 
-            <!-- procurementWay field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Procurement Way</mat-label>
-                <mat-select formControlName="procurementWay">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'SMALL'">{{ "SMALL" }}</mat-option>
-                    <mat-option [value]="'PRICE_REQUEST'">
-                        {{
-            "PRICE_REQUEST"
-          }}
-                    </mat-option>
-                    <mat-option [value]="'PROPOSALS_REQUEST'">{{ "PROPOSALS_REQUEST" }}</mat-option>
-                    <mat-option [value]="'NON_ALTERNATIVE'">{{ "NON_ALTERNATIVE" }}</mat-option>
-                    <mat-option [value]="'INTRAGROUP'">{{ "INTRAGROUP" }}</mat-option>
-                    <mat-option [value]="'EXCLUSIVE_SUPPLIER'">{{ "EXCLUSIVE_SUPPLIER" }}</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <!-- procurementWay field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "procurementWay" | realName }}</mat-label>
+        <mat-select formControlName="procurementWay">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'SMALL'">{{ "SMALL" | realName }}</mat-option>
+          <mat-option [value]="'PRICE_REQUEST'">
+            {{ "PRICE_REQUEST" | realName }}
+          </mat-option>
+          <mat-option [value]="'PROPOSALS_REQUEST'">{{
+            "PROPOSALS_REQUEST" | realName
+          }}</mat-option>
+          <mat-option [value]="'NON_ALTERNATIVE'">{{
+            "NON_ALTERNATIVE" | realName
+          }}</mat-option>
+          <mat-option [value]="'INTRAGROUP'">{{
+            "INTRAGROUP" | realName
+          }}</mat-option>
+          <mat-option [value]="'EXCLUSIVE_SUPPLIER'">{{
+            "EXCLUSIVE_SUPPLIER" | realName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <!-- Vendor field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Vendor</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="vendor"
-                >
-            </mat-form-field>
+      <!-- Vendor field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "vendor" | realName }}</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="vendor" />
+      </mat-form-field>
 
-            <!-- groupSign field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Group Sign</mat-label>
-                <mat-select formControlName="groupSign">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'NK'">{{ "NK" }}</mat-option>
-                    <mat-option [value]="'EOS_IT'">{{ "EOS_IT" }}</mat-option>
-                    <mat-option [value]="'OG'">{{ "OG" }}</mat-option>
-                    <mat-option [value]="'RECOMMENDED'">{{ "RECOMMENDED" }}</mat-option>
-                    <mat-option [value]="'EXCLUSIVE'">{{ "EXCLUSIVE" }}</mat-option>
-                    <mat-option [value]="'ANOTHER'">{{ "ANOTHER" }}</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <!-- groupSign field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "groupSign" | realName }}</mat-label>
+        <mat-select formControlName="groupSign">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'NK'">{{ "NK" | realName }}</mat-option>
+          <mat-option [value]="'EOS_IT'">{{ "EOS_IT" | realName }}</mat-option>
+          <mat-option [value]="'OG'">{{ "OG" | realName }}</mat-option>
+          <mat-option [value]="'RECOMMENDED'">{{
+            "RECOMMENDED" | realName
+          }}</mat-option>
+          <mat-option [value]="'EXCLUSIVE'">{{
+            "EXCLUSIVE" | realName
+          }}</mat-option>
+          <mat-option [value]="'ANOTHER'">{{
+            "ANOTHER" | realName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <!-- Macro Region field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Macro region</mat-label>
-                <mat-select formControlName="macroRegion">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'MOSCOW'">{{ "MOSCOW" }}</mat-option>
-                    <mat-option [value]="'CENTER'">{{ "CENTER" }}</mat-option>
-                    <mat-option [value]="'SOUTH'">{{ "SOUTH" }}</mat-option>
-                    <mat-option [value]="'VOLGA_REGION'">{{ "VOLGA_REGION" }}</mat-option>
-                    <mat-option [value]="'URAL'">{{ "URAL" }}</mat-option>
-                    <mat-option [value]="'WEST_SIBERIAN'">
-                        {{
-            "WEST_SIBERIAN"
-          }}
-                    </mat-option>
-                    <mat-option [value]="'EAST_SIBERIAN'">
-                        {{
-            "EAST_SIBERIAN"
-          }}
-                    </mat-option>
-                    <mat-option [value]="'FAR_EAST'">{{ "FAR_EAST" }}</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <!-- Macro Region field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "macroRegion" | realName }}</mat-label>
+        <mat-select formControlName="macroRegion">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'MOSCOW'">{{ "MOSCOW" | realName }}</mat-option>
+          <mat-option [value]="'CENTER'">{{ "CENTER" | realName }}</mat-option>
+          <mat-option [value]="'SOUTH'">{{ "SOUTH" | realName }}</mat-option>
+          <mat-option [value]="'VOLGA_REGION'">{{
+            "VOLGA_REGION" | realName
+          }}</mat-option>
+          <mat-option [value]="'URAL'">{{ "URAL" | realName }}</mat-option>
+          <mat-option [value]="'WEST_SIBERIAN'">
+            {{ "WEST_SIBERIAN" | realName }}
+          </mat-option>
+          <mat-option [value]="'EAST_SIBERIAN'">
+            {{ "EAST_SIBERIAN" | realName }}
+          </mat-option>
+          <mat-option [value]="'FAR_EAST'">{{
+            "FAR_EAST" | realName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <!-- VAT Rate field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>VAT Rate</mat-label>
-                <mat-select formControlName="vatRate">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'VAT_0'">{{ "VAT_0" }}</mat-option>
-                    <mat-option [value]="'VAT_10'">{{ "VAT_10" }}</mat-option>
-                    <mat-option [value]="'VAT_18'">{{ "VAT_18" }}</mat-option>
-                    <mat-option [value]="'VAT_20'">{{ "VAT_20" }}</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <!-- VAT Rate field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "vatRate" | realName }}</mat-label>
+        <mat-select formControlName="vatRate">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'VAT_0'">{{ "VAT_0" | realName }}</mat-option>
+          <mat-option [value]="'VAT_10'">{{ "VAT_10" | realName }}</mat-option>
+          <mat-option [value]="'VAT_18'">{{ "VAT_18" | realName }}</mat-option>
+          <mat-option [value]="'VAT_20'">{{ "VAT_20" | realName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <!-- agreementSum field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Agreement Sum</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="agreementSum"
-                >
-            </mat-form-field>
+      <!-- agreementSum field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "agreementSum" | realName }}</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          formControlName="agreementSum"
+        />
+      </mat-form-field>
 
-            <!-- agreementDate field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Agreement Date</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="agreementDate"
-                >
-            </mat-form-field>
+      <!-- agreementDate field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "agreementDate" | realName }}</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          formControlName="agreementDate"
+        />
+      </mat-form-field>
 
-            <!-- Agreement Execution Date field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Agreement Execution Date</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="agreementExecutionDate"
-                >
-            </mat-form-field>
+      <!-- Agreement Execution Date field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "agreementExecutionDate" | realName }}</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          formControlName="agreementExecutionDate"
+        />
+      </mat-form-field>
 
-            <!-- payment Term field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Payment Term</mat-label>
-                <input
-                    matInput
-                    placeholder="Placeholder"
-                    formControlName="paymentTerm"
-                >
-            </mat-form-field>
+      <!-- payment Term field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "paymentTerm" | realName }}</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          formControlName="paymentTerm"
+        />
+      </mat-form-field>
 
-            <!-- capexType Rate field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Expense Type</mat-label>
-                <mat-select formControlName="expensesType">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'OPEX'">{{ "OPEX" }}</mat-option>
-                    <mat-option [value]="'CAPEX'">{{ "CAPEX" }}</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <!-- capexType Rate field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "expensesType" | realName }}</mat-label>
+        <mat-select formControlName="expensesType">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'OPEX'">{{ "OPEX" }}</mat-option>
+          <mat-option [value]="'CAPEX'">{{ "CAPEX" }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <!-- capexType Rate field -->
-            <mat-form-field
-                appearance="outline"
-                class="form__field"
-            >
-                <mat-label>Capex Type</mat-label>
-                <mat-select formControlName="capexType">
-                    <mat-option>None</mat-option>
-                    <mat-option [value]="'MAINTAINING'">{{ "MAINTAINING" }}</mat-option>
-                    <mat-option [value]="'DEVELOPMENT'">{{ "DEVELOPMENT" }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="form__description">* - required fields</div>
-        <button
-            class="form__btn"
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="form.invalid"
-        >
-            {{type === 'create' ? 'Create' : 'Update'}}
-        </button>
-    </form>
+      <!-- capexType Rate field -->
+      <mat-form-field appearance="outline" class="form__field">
+        <mat-label>{{ "capexType" | realName }}</mat-label>
+        <mat-select formControlName="capexType">
+          <mat-option>None</mat-option>
+          <mat-option [value]="'MAINTAINING'">{{
+            "MAINTAINING" | realName
+          }}</mat-option>
+          <mat-option [value]="'DEVELOPMENT'">{{
+            "DEVELOPMENT" | realName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form__description">* - required fields</div>
+    <button
+      class="form__btn"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      {{ type === "create" ? "Create" : "Update" }}
+    </button>
+  </form>
 </div>
